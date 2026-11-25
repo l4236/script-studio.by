@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скрипт — сайты с нуля на коде</title>
+  <meta name="description" content="Скрипт — создание современных сайтов под ключ в Минске. Сайты-визитки и многостраничные сайты, адаптивный дизайн и публикация сайта.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://script-studio.by/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDF6F0;
+    --bg-alt: #F5E8DD;
+    --card: #FFFFFF;
+    --ink: #3A2E28;
+    --ink-muted: #8B7A6E;
+    --coral: #F2967B;
+    --lavender: #9B93D9;
+    --line: rgba(58,46,40,0.12);
+    --max: 1080px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: 'Mulish', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { font-family: 'Nunito', sans-serif; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .eyebrow { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender); font-weight: 700; margin-bottom: 12px; display: block; }
+  :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(253,246,240,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; max-width: var(--max); margin: 0 auto; gap: 12px; }
+  .brand { font-family:'Nunito',sans-serif; font-size:1.2rem; font-weight:800; text-decoration:none; }
+  .nav-links { list-style:none; display:flex; gap:22px; margin:0; padding:0; }
+  .nav-links a { text-decoration:none; font-size:0.9rem; color: var(--ink-muted); transition: color .3s var(--ease); }
+  .nav-links a:hover { color: var(--ink); }
+
+  .btn { display:inline-flex; align-items:center; gap:9px; padding: 14px 26px; border-radius: 999px; font-size:0.92rem; font-weight:700; text-decoration:none; transition: transform .35s var(--ease), box-shadow .35s var(--ease); border: none; cursor:pointer; }
+  .btn-primary { background: var(--coral); color: #fff; box-shadow: 0 8px 22px rgba(242,150,123,0.35); animation: glowPulse 3.2s ease-in-out infinite; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(242,150,123,0.55); }
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 8px 22px rgba(242,150,123,0.3); }
+    50% { box-shadow: 0 8px 30px rgba(242,150,123,0.55); }
+  }
+  .btn-ghost { background: var(--card); border: 1.5px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--lavender); color: var(--lavender); }
+  .btn-sm { padding: 10px 20px; font-size: 0.82rem; }
+
+  .hero { padding: 56px 0 36px; }
+  .hero .wrap { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:36px; align-items:center; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.05; margin: 8px 0 18px; }
+  .hero p.lead { color: var(--ink-muted); font-size: clamp(0.98rem, 2vw, 1.08rem); max-width: 44ch; margin-bottom: 28px; }
+  .btn-row { display:flex; gap:14px; flex-wrap:wrap; }
+
+  .petal-wrap { display:flex; justify-content:center; }
+  .petals { animation: breathe 5.5s ease-in-out infinite; transform-origin: 150px 150px; }
+  @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.045); } }
+
+  section { padding: clamp(48px, 8vw, 76px) 0; }
+  .section-head { max-width: 50ch; margin-bottom: 20px; }
+  .section-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.15rem); }
+  .section-sub { color: var(--ink-muted); margin-top: 10px; font-size: 0.98rem; }
+
+  .portfolio-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+  .p-card { background: var(--card); border-radius: 20px; padding: 26px; border: 1px solid var(--line); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .p-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(155,147,217,0.18); }
+  .p-card h3 { font-family:'Nunito',sans-serif; font-size: 1.2rem; margin-bottom: 8px; font-weight:800; }
+  .p-card p { color: var(--ink-muted); font-size: 0.95rem; margin: 0 0 16px; }
+  .swatches { display:flex; gap:6px; margin-bottom: 14px; }
+  .swatches span { width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.06); }
+  .p-card a.p-link { font-size: 0.88rem; color: var(--coral); text-decoration:none; font-weight:700; }
+  .p-card a.p-link:hover { text-decoration: underline; }
+
+  .service-list { margin-top: 36px; display:flex; flex-direction:column; }
+  .service-item { display:flex; gap:18px; padding: 18px 0; border-top: 1px solid var(--line); align-items:baseline; }
+  .service-item:last-child { border-bottom: 1px solid var(--line); }
+  .service-num { font-family:'Nunito',sans-serif; color: var(--lavender); font-weight:800; font-size: 0.95rem; flex-shrink:0; width: 30px; }
+  .service-text { font-size: 1rem; }
+
+  .price-groups { margin-top: 36px; display:grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .price-group h3 { font-size: 0.98rem; font-weight: 800; color: var(--lavender); margin-bottom: 4px; font-family:'Nunito',sans-serif; }
+  .price-item { display:flex; align-items:baseline; gap:10px; padding: 11px 0; }
+  .price-item .name { font-weight: 500; }
+  .price-item .leader { flex:1; border-bottom: 2px dotted rgba(139,122,110,0.35); margin-bottom: 5px; }
+  .price-item .price { color: var(--coral); font-weight:800; white-space:nowrap; font-size: 1.02rem; }
+  .price-note { margin-top: 20px; color: var(--ink-muted); font-size: 0.9rem; grid-column: 1 / -1; }
+
+  .about-body { max-width: 60ch; color: var(--ink-muted); font-size: 1.02rem; margin-top: 8px; }
+  .about-body p + p { margin-top: 14px; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--ink-muted); font-size:0.86rem; }
+  .footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+
+  .reveal { opacity:0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in { opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .btn-primary { animation: none; }
+    .petals { animation: none; }
+  }
+
+  @media (max-width: 860px) {
+    .hero { padding-top: 40px; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .petal-wrap { order:-1; margin-bottom: 8px; }
+    .petal-wrap svg { width: 180px; height: 180px; }
+    .nav-links { display:none; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .price-groups { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (max-width: 420px) {
+    .btn-row { flex-direction: column; align-items: stretch; }
+    .btn-row .btn { justify-content: center; }
+  }
+.seo-text {
+  padding: 70px 0;
+}
+
+.seo-text h2 {
+  margin-bottom: 20px;
+}
+
+.seo-text p {
+  max-width: 800px;
+  margin: 0 0 16px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+/* Reviews */
+.reviews-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
+.review-card{background:linear-gradient(145deg,var(--card),rgba(155,147,217,.055));border-radius:18px;padding:18px 20px;border:1px solid var(--line);box-shadow:0 10px 26px rgba(58,46,40,.045);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.review-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(155,147,217,.13)}
+.review-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:7px}
+.review-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.96rem}
+.review-date{color:var(--ink-muted);font-size:.72rem;margin-top:1px}
+.review-stars{color:var(--coral);letter-spacing:1px;white-space:nowrap;font-size:.82rem}
+.review-text{margin:0;color:var(--ink-muted);line-height:1.55;font-size:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.review-form{margin-top:34px;max-width:720px;padding-top:4px}
+.review-form-grid{display:grid;grid-template-columns:1fr 180px;gap:12px}
+.review-input,.review-textarea,.review-select{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;padding:12px 14px;font:inherit;outline:none}
+.review-input:focus,.review-textarea:focus,.review-select:focus{border-color:var(--lavender);box-shadow:0 0 0 3px rgba(155,147,217,.1)}
+.review-textarea{min-height:110px;resize:vertical;margin-top:12px}
+.review-submit{margin-top:12px}
+.review-note{color:var(--ink-muted);font-size:.78rem;margin-top:8px}
+.review-empty{color:var(--ink-muted);margin-top:22px}
+.review-more-wrap{text-align:center;margin-top:20px}
+.review-more{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer;transition:.25s}
+.review-more:hover{border-color:var(--lavender);color:var(--lavender);transform:translateY(-1px)}
+.review-status{font-size:.84rem;margin-top:10px;color:var(--ink-muted)}
+@media(max-width:700px){.reviews-grid{grid-template-columns:1fr}.review-form-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top">Скрипт</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Портфолио</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#about">Обо мне</a></li><li><a href="#reviews">Отзывы</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Небольшая студия одного человека · Минск</span>
+        <h1>Скрипт</h1>
+        <p class="lead">Пишу сайты с нуля кодом — быстро, по делу, без шаблонов и конструкторов.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn btn-ghost" href="#portfolio">Смотреть работы</a>
+        </div>
+      </div>
+      <div class="petal-wrap">
+        <svg width="220" height="220" viewBox="0 0 300 300">
+          <g class="petals">
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(0 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(45 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(90 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(135 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(180 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(225 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(270 150 150)"/>
+            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(315 150 150)"/>
+            <circle cx="150" cy="150" r="22" fill="var(--card)" stroke="var(--coral)" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Портфолио</span>
+        <h2>Последние работы</h2>
+      </div>
+      <div class="portfolio-grid reveal">
+        <div class="p-card">
+          <div class="swatches"><span style="background:#F7F3EC"></span><span style="background:#A32638"></span><span style="background:#5C6B4E"></span><span style="background:#D9A441"></span></div>
+          <h3>Тихий двор</h3>
+          <p>Кафе с белорусским меню, кнопкой записи в Telegram и интерактивными карточками блюд при наведении.</p>
+          <!-- Ссылка временно скрыта: копии сайта нет. Вернуть: <a class="p-link" href="https://cafe-tihiy-dvor.netlify.app" target="_blank" rel="noopener">Смотреть сайт →</a> -->
+        </div>
+        <div class="p-card">
+          <div class="swatches"><span style="background:#F6F1EC"></span><span style="background:#7A2E3A"></span><span style="background:#D98A93"></span><span style="background:#B08D57"></span></div>
+          <h3>Смальта</h3>
+          <p>Ногтевая студия в Минске с гидом по формам ногтей и плавным интерактивным меню услуг.</p>
+          <a class="p-link" href="/smalta.html" target="_blank" rel="noopener">Смотреть сайт →</a>
+          </div>
+          <div class="p-card">
+  <div class="swatches">
+  <span style="background:#F3D6E4"></span>
+  <span style="background:#B86B8B"></span>
+  <span style="background:#5A2940"></span>
+</div>
+  <h3>FLORA</h3>
+  <p>Цветочная мастерская в Минске с каталогом букетов и удобным заказом.</p>
+  <a class="p-link" href="/flora.html" target="_blank" rel="noopener">Смотреть сайт →</a>
+</div>
+
+<div class="p-card">
+  <div class="swatches">
+    <span style="background:#E8E3DA"></span>
+    <span style="background:#4B4A46"></span>
+    <span style="background:#171717"></span>
+  </div>
+  <h3>FORMA</h3>
+  <p>Современная архитектурная студия с минималистичным премиальным дизайном.</p>
+  <a class="p-link" href="/atelier.html" target="_blank" rel="noopener">Смотреть сайт →</a>
+</div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+ <section class="seo-text">
+  <div class="wrap">
+    <h2>Создание сайтов в Минске</h2>
+    <p>
+      Разрабатываю современные сайты в Минске для бизнеса, специалистов
+      и небольших компаний. Создаю сайты-визитки, лендинги и
+      многостраничные сайты с нуля на коде.
+    </p>
+    <p>
+      Каждый сайт адаптируется под телефоны, планшеты и компьютеры.
+      Помогаю пройти путь от идеи до запуска: разработка,
+      базовая SEO-настройка, подключение домена и публикация сайта.
+    </p>
+  </div>
+</section>
+  <section id="services">
+    <div class="wrap">
+      
+      <div class="section-head reveal">
+        <span class="eyebrow">Услуги</span>
+        <h2>Что делаю</h2>
+      </div>
+      <div class="service-list reveal">
+        <div class="service-item"><span class="service-num">01</span><span class="service-text">Сайт с нуля на коде — без шаблонов и конструкторов</span></div>
+        <div class="service-item"><span class="service-num">02</span><span class="service-text">Адаптивный дизайн — одинаково хорошо на телефоне и компьютере</span></div>
+        <div class="service-item"><span class="service-num">03</span><span class="service-text">Публикация и базовая настройка хостинга — включены</span></div>
+        <div class="service-item"><span class="service-num">04</span><span class="service-text">Готово за 3-5 дней с момента брифа</span></div>
+      </div>
+
+      <div class="section-head reveal" style="margin-top:56px;">
+        <span class="eyebrow">Цены</span>
+        <h2>Сколько это стоит</h2>
+      </div>
+      <div class="price-groups reveal">
+        <div>
+          <div class="price-group">
+            <h3>Разработка</h3>
+            <div class="price-item"><span class="name">Сайт-визитка (1 страница)</span><span class="leader"></span><span class="price">от 150 руб.</span></div>
+            <div class="price-item"><span class="name">Многостраничный сайт (3+)</span><span class="leader"></span><span class="price">от 280 руб.</span></div>
+            <div class="price-item"><span class="name">Домен и хостинг</span><span class="leader"></span><span class="price">включено</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="price-group">
+            <h3>После сдачи</h3>
+            <div class="price-item"><span class="name">Правки в первые 7 дней</span><span class="leader"></span><span class="price">2 круга включены</span></div>
+            <div class="price-item"><span class="name">Доработка позже</span><span class="leader"></span><span class="price">15 руб. / правка</span></div>
+            <div class="price-item"><span class="name">Доп. раздел сайта</span><span class="leader"></span><span class="price">40 руб.</span></div>
+            <div class="price-item"><span class="name">Сопровождение сайта</span><span class="leader"></span><span class="price">от 25 руб./мес</span></div>
+          </div>
+        </div>
+        <p class="price-note">Срочная сдача (за 48 часов вместо 3-5 дней) — +40 руб. Итоговая цена всегда обсуждается до старта, без сюрпризов в конце.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Обо мне</span>
+        <h2>Без агентства и без посредников</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>Я не агентство и не конструктор — один человек, который лично пишет код каждого сайта и лично отвечает на сообщения. Меньше бюрократии, больше внимания к деталям.</p>
+        <p>Если нужен сайт, который выглядит не как «ещё один шаблон», а сделан конкретно под твой бизнес — пиши, обсудим.</p>
+      </div>
+    </div>
+  </section>
+
+<section id="reviews">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow">Отзывы</span>
+<h2>Что говорят о работе</h2>
+<p class="section-sub">Оставь отзыв о сайте или работе со «Скриптом» — он появится здесь.</p>
+</div>
+<div id="reviewsList" class="reviews-grid reveal"></div>
+<p id="reviewsEmpty" class="review-empty" hidden>Пока отзывов нет. Будь первым.</p>
+<div id="reviewMoreWrap" class="review-more-wrap" hidden><button id="reviewMore" class="review-more" type="button">Показать ещё</button></div>
+<div class="review-form reveal">
+<div class="section-head"><span class="eyebrow">Оставить отзыв</span><h2>Поделись впечатлением</h2></div>
+<form id="reviewForm">
+<div class="review-form-grid">
+<input class="review-input" id="reviewName" type="text" placeholder="Твоё имя" maxlength="40" required>
+<select class="review-select" id="reviewRating" required>
+<option value="5">★★★★★ 5/5</option><option value="4">★★★★☆ 4/5</option><option value="3">★★★☆☆ 3/5</option><option value="2">★★☆☆☆ 2/5</option><option value="1">★☆☆☆☆ 1/5</option>
+</select>
+</div>
+<textarea class="review-textarea" id="reviewText" placeholder="Напиши свой отзыв..." maxlength="500" required></textarea>
+<button class="btn btn-primary review-submit" type="submit">Отправить отзыв</button>
+<p class="review-note">После отправки отзыв можно сначала проверить, а затем опубликовать.</p>
+<p id="reviewStatus" class="review-status" role="status"></p>
+</form>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© Скрипт</span>
+    <span>Минск · Telegram: @kamkae</span>
+  </div>
+</footer>
+
+<script>
+  /* Анимации */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function (i) { io.observe(i); });
+  } else {
+    reveals.forEach(function (i) { i.classList.add('in'); });
+  }
+
+  /* Общие отзывы через Supabase.
+     После создания проекта вставь сюда Project URL и anon key. */
+  var SUPABASE_URL = 'https://umnzeqphbrdhvqhjvksa.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_tY3pwZ6ZEECez0B8zrvbCQ_QlfBDupd';
+
+  var reviewForm = document.getElementById('reviewForm');
+  var reviewsList = document.getElementById('reviewsList');
+  var reviewsEmpty = document.getElementById('reviewsEmpty');
+  var reviewMoreWrap = document.getElementById('reviewMoreWrap');
+  var reviewMore = document.getElementById('reviewMore');
+  var reviewStatus = document.getElementById('reviewStatus');
+
+  var reviews = [];
+  var reviewsVisible = 4;
+  var reviewsStep = 4;
+
+  function escapeHTML(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function configured() {
+    return SUPABASE_URL.indexOf('ВСТАВЬ_СЮДА') === -1 &&
+           SUPABASE_ANON_KEY.indexOf('ВСТАВЬ_СЮДА') === -1;
+  }
+
+  function setStatus(message, isError) {
+    reviewStatus.textContent = message || '';
+    reviewStatus.style.color = isError ? 'var(--coral)' : 'var(--ink-muted)';
+  }
+
+  function formatDate(value) {
+    if (!value) return '';
+    var d = new Date(value);
+    return isNaN(d.getTime()) ? '' : d.toLocaleDateString('ru-RU');
+  }
+
+  async function loadReviews() {
+    if (!configured()) {
+      reviews = [];
+      reviewsEmpty.hidden = false;
+      reviewsEmpty.textContent = 'База отзывов ещё не подключена.';
+      reviewMoreWrap.hidden = true;
+      return;
+    }
+
+    try {
+      var response = await fetch(
+        SUPABASE_URL + '/rest/v1/reviews?select=id,name,rating,text,created_at&order=created_at.desc',
+        {
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+          }
+        }
+      );
+
+      if (!response.ok) throw new Error('Не удалось загрузить отзывы');
+      reviews = await response.json();
+      renderReviews();
+    } catch (error) {
+      reviews = [];
+      reviewsEmpty.hidden = false;
+      reviewsEmpty.textContent = 'Не удалось загрузить отзывы. Попробуй обновить страницу.';
+      reviewMoreWrap.hidden = true;
+      setStatus('Ошибка подключения к базе.', true);
+    }
+  }
+
+  function renderReviews() {
+    reviewsList.innerHTML = '';
+
+    if (!reviews.length) {
+      reviewsEmpty.hidden = false;
+      reviewMoreWrap.hidden = true;
+      return;
+    }
+
+    reviewsEmpty.hidden = true;
+
+    reviews.slice(0, reviewsVisible).forEach(function (review) {
+      var card = document.createElement('article');
+      card.className = 'review-card';
+
+      var rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
+      var stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+      card.innerHTML =
+        '<div class="review-top">' +
+          '<div>' +
+            '<div class="review-name">' + escapeHTML(review.name) + '</div>' +
+            '<div class="review-date">' + escapeHTML(formatDate(review.created_at)) + '</div>' +
+          '</div>' +
+          '<div class="review-stars" aria-label="Оценка ' + rating + ' из 5">' + stars + '</div>' +
+        '</div>' +
+        '<p class="review-text">' + escapeHTML(review.text).replace(/\n/g, '<br>') + '</p>';
+
+      reviewsList.appendChild(card);
+    });
+
+    if (reviews.length > reviewsVisible) {
+      reviewMoreWrap.hidden = false;
+      reviewMore.textContent = 'Показать ещё';
+    } else if (reviews.length > 4) {
+      reviewMoreWrap.hidden = false;
+      reviewMore.textContent = 'Свернуть отзывы';
+    } else {
+      reviewMoreWrap.hidden = true;
+    }
+  }
+
+  reviewMore.addEventListener('click', function () {
+    if (reviewsVisible < reviews.length) {
+      reviewsVisible += reviewsStep;
+    } else {
+      reviewsVisible = 4;
+    }
+    renderReviews();
+  });
+
+  reviewForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    var name = document.getElementById('reviewName').value.trim();
+    var rating = Number(document.getElementById('reviewRating').value);
+    var text = document.getElementById('reviewText').value.trim();
+
+    if (!name || !text || rating < 1 || rating > 5) {
+      setStatus('Заполни имя и текст отзыва.', true);
+      return;
+    }
+
+    if (!configured()) {
+      setStatus('База ещё не подключена. Сначала создай проект Supabase и вставь его данные в код.', true);
+      return;
+    }
+
+    var button = reviewForm.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = 'Отправляем...';
+    setStatus('');
+
+    try {
+      var response = await fetch(SUPABASE_URL + '/rest/v1/reviews', {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          name: name,
+          rating: rating,
+          text: text
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      reviewForm.reset();
+      reviewsVisible = 4;
+      setStatus('Спасибо! Отзыв отправлен.', false);
+      await loadReviews();
+    } catch (error) {
+      setStatus('Не получилось отправить отзыв. Проверь настройки Supabase.', true);
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Отправить отзыв';
+    }
+  });
+
+  loadReviews();
+</script>
+</body>
+</html>

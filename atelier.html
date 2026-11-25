@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="NOVA Atelier — современная архитектурная студия. Интерьеры, частные дома и общественные пространства.">
+<meta name="theme-color" content="#111111"><title>NOVA Atelier — архитектура, в которой хочется жить</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#101010;--paper:#e9e5dc;--line:#ffffff22;--muted:#aaa69d;--accent:#d6c19a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:"DM Sans",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 44px));margin:auto}
+.nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.logo{font:700 21px Manrope;letter-spacing:.12em}.links{display:flex;gap:30px;font-size:13px;color:#ccc}.links a:hover{color:#fff}.menu{display:none}
+.hero{padding:80px 0 90px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:end}.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(58px,9vw,118px)/.9 Manrope;margin:22px 0 0;letter-spacing:-.055em}.hero-copy{align-self:end;padding-bottom:8px}.hero-copy p{font-size:18px;line-height:1.75;color:#bdb9b0;margin:0 0 28px}.btn{display:inline-flex;padding:14px 20px;border:1px solid #ffffff40;border-radius:999px;font-size:13px;transition:.25s}.btn:hover{background:#fff;color:#111;transform:translateY(-2px)}
+.hero-img{height:560px;margin-top:55px;overflow:hidden}.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.75)}
+section{padding:100px 0;border-top:1px solid var(--line)}.head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:45px}.head h2{font:700 clamp(38px,6vw,66px)/.95 Manrope;margin:0;letter-spacing:-.04em}.head p{max-width:430px;color:#a9a59c;line-height:1.7}
+.projects{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.project{position:relative;min-height:600px;overflow:hidden}.project.small{min-height:600px}.project img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.7);transition:transform .6s}.project:hover img{transform:scale(1.04)}.project:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#000c)}.project-info{position:absolute;z-index:2;left:26px;right:26px;bottom:25px}.project-info h3{font:600 28px Manrope;margin:0 0 7px}.project-info span{font-size:12px;color:#d5d0c7}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px}.bigtext{font:600 clamp(34px,5vw,58px)/1.05 Manrope;letter-spacing:-.04em}.details p{color:#aaa69d;line-height:1.8}.facts{margin-top:35px;border-top:1px solid var(--line)}.fact{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}.fact span:last-child{color:var(--accent)}
+.contact{padding:110px 0 125px}.contact h2{font:700 clamp(50px,9vw,110px)/.9 Manrope;letter-spacing:-.06em;margin:0 0 35px}.contact p{color:#aaa69d;max-width:500px;line-height:1.7}.contact .btn{margin-top:18px}
+footer{padding:25px 0 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#77736b;font-size:12px}
+@media(max-width:800px){.wrap{width:min(100% - 28px,1180px)}.links{display:none}.menu{display:block;font-size:13px}.hero{padding-top:55px}.hero-grid,.projects,.split{grid-template-columns:1fr}.hero-img{height:420px;margin-top:40px}.project,.project.small{min-height:460px}.head{display:block}.head p{margin-top:18px}.split{gap:35px}section{padding:72px 0}.contact{padding:80px 0}.hero-copy p{font-size:16px}}
+</style></head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#">NOVA / ATELIER</a><nav class="links"><a href="#projects">Проекты</a><a href="#studio">Студия</a><a href="#contact">Контакты</a></nav><span class="menu">MENU</span></div></header>
+<main>
+<section class="hero"><div class="wrap"><div class="hero-grid"><div><div class="kicker">Архитектура · Интерьеры · Минск</div><h1>Пространство<br>имеет значение.</h1></div><div class="hero-copy"><p>Проектируем дома и интерьеры, в которых форма работает на человека. Минимум лишнего. Максимум характера.</p><a class="btn" href="#projects">Смотреть проекты ↓</a></div></div><div class="hero-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85" alt="Современный интерьер" fetchpriority="high"></div></div></section>
+<section id="projects"><div class="wrap"><div class="head"><h2>Избранные<br>проекты</h2><p>Два направления, объединённые одним подходом: спокойная архитектура, натуральные материалы и точная работа с деталями.</p></div>
+<div class="projects"><a class="project" href="#contact"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85" alt="Современный частный дом" loading="lazy"><div class="project-info"><h3>Дом 04</h3><span>Частная архитектура · 2026</span></div></a>
+<a class="project small" href="#contact"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85" alt="Современный интерьер" loading="lazy"><div class="project-info"><h3>Тихий интерьер</h3><span>Интерьер · Минск</span></div></a></div></div></section>
+<section id="studio"><div class="wrap split"><div class="bigtext">Мы не украшаем пространство. Мы делаем его точнее.</div><div class="details"><p>NOVA Atelier — небольшая архитектурная студия с фокусом на частные дома, квартиры и коммерческие пространства. Берём проект от идеи до реализации.</p><div class="facts"><div class="fact"><span>Основана</span><span>2026</span></div><div class="fact"><span>Формат</span><span>Полный цикл</span></div><div class="fact"><span>География</span><span>Минск · Беларусь</span></div></div></div></div></section>
+<section id="contact" class="contact"><div class="wrap"><div class="kicker">Начать проект</div><h2>Расскажите<br>о задаче.</h2><p>Опишите объект, сроки и то, каким вы хотите видеть пространство. Мы вернёмся с первым предложением.</p><a class="btn" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать в Telegram ↗</a></section>
+</main>
+<footer class="wrap"><span>NOVA / ATELIER</span><span>Архитектура · Минск</span></footer>
+</body></html>

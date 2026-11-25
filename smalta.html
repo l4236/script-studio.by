@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Смальта — ногтевая студия в Минске</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F1EC;
+    --bg-alt: #EFE1DE;
+    --card: #FFFFFF;
+    --ink: #241620;
+    --ink-muted: #6E5A62;
+    --accent-wine: #7A2E3A;
+    --accent-blush: #D98A93;
+    --gold: #B08D57;
+    --line: rgba(36,22,32,0.14);
+    --max: 1100px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: 'Golos Text', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -0.005em; margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-wine); font-weight: 600; margin-bottom: 14px; display: block; }
+  :focus-visible { outline: 2px solid var(--accent-wine); outline-offset: 3px; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(246,241,236,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: var(--max); margin: 0 auto; }
+  .brand { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; text-decoration:none; letter-spacing: 0.01em; }
+  .nav-links { list-style:none; display:flex; gap:26px; margin:0; padding:0; }
+  .nav-links a { text-decoration:none; font-size:0.9rem; color: var(--ink-muted); transition: color .35s var(--ease); }
+  .nav-links a:hover { color: var(--ink); }
+
+  .btn { display:inline-flex; align-items:center; gap:9px; padding: 14px 26px; border-radius: 999px; font-size:0.9rem; font-weight:600; text-decoration:none; transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease); border: none; cursor:pointer; }
+  .btn-primary { background: var(--accent-blush); color: var(--ink); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(217,138,147,0.45); }
+  .btn-ghost { background: transparent; border: 1.5px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent-blush); color: var(--accent-wine); }
+  .btn-sm { padding: 10px 20px; font-size: 0.82rem; }
+
+  .hero { padding: 64px 0 40px; }
+  .hero .wrap { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:40px; align-items:center; }
+  .hero h1 { font-size: clamp(2.6rem, 5.6vw, 4rem); line-height: 1.05; margin: 8px 0 20px; }
+  .hero p.lead { color: var(--ink-muted); font-size: 1.06rem; max-width: 44ch; margin-bottom: 30px; }
+  .btn-row { display:flex; gap:14px; flex-wrap:wrap; }
+
+  .fan-wrap { display:flex; justify-content:center; }
+  .swatch { transform-origin: center 190px; animation: float 4.5s var(--ease) infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+  .dot-divider { display:flex; justify-content:center; align-items:center; gap:14px; padding: 36px 0; }
+  .dot-divider span { width:7px; height:7px; border-radius:50%; background: var(--accent-blush); }
+  .dot-divider span:nth-child(odd) { opacity:0.35; }
+  .dot-divider span:nth-child(3) { width:10px; height:10px; opacity:0.8; }
+
+  section { padding: 76px 0; }
+  .section-head { max-width: 50ch; margin-bottom: 20px; }
+  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+  .section-sub { color: var(--ink-muted); margin-top: 10px; font-size: 0.98rem; }
+  .about-body { max-width: 60ch; color: var(--ink-muted); font-size: 1.02rem; margin-top: 8px; }
+  .about-body p + p { margin-top: 14px; }
+
+  .price-columns { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+  .price-group + .price-group { margin-top: 30px; }
+  .price-group h3 { font-size: 1rem; font-weight: 700; color: var(--accent-wine); margin-bottom: 6px; font-family:'Golos Text',sans-serif; }
+  .price-item { display:flex; align-items:baseline; gap:10px; padding: 11px 0; }
+  .price-item .name { font-weight: 500; }
+  .price-item .leader { flex:1; border-bottom: 2px dotted rgba(110,90,98,0.35); margin-bottom: 5px; }
+  .price-item .price { color: var(--ink); font-weight:700; white-space:nowrap; font-size: 1.12rem; }
+
+  .shapes-layout { display:grid; grid-template-columns: 1fr 1.2fr; gap: 44px; margin-top: 40px; align-items:start; }
+  .shape-list { display:flex; flex-direction:column; gap:4px; }
+  .shape-item { display:flex; align-items:center; gap:14px; padding: 14px 14px; border-radius: 16px; cursor:pointer; transition: background .35s var(--ease); }
+  .shape-item:hover, .shape-item.active { background: var(--card); }
+  .shape-item.active .shape-name { color: var(--accent-wine); }
+  .shape-name { font-weight: 600; font-family:'Playfair Display',serif; font-size: 1.02rem; }
+  .shape-desc { color: var(--ink-muted); font-size: 0.86rem; margin-top: 2px; }
+
+  .shape-preview { position: sticky; top: 100px; display:flex; flex-direction:column; align-items:center; background: var(--card); border-radius: 28px; padding: 40px 20px; box-shadow: 0 20px 48px rgba(217,138,147,0.18); }
+  .preview-icon { width: 140px; height: 140px; transition: opacity .3s var(--ease), transform .3s var(--ease); }
+  .preview-icon.swap { opacity: 0; transform: scale(.9); }
+  .preview-caption { margin-top: 18px; font-weight: 700; font-family:'Playfair Display',serif; font-size: 1.1rem; }
+
+  .visit-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px; }
+  .visit-card { background: var(--card); border-radius: 22px; padding: 28px; box-shadow: 0 14px 36px rgba(217,138,147,0.14); }
+  .visit-card h3 { font-size:1.02rem; margin-bottom:12px; font-family:'Golos Text',sans-serif; font-weight:700; }
+  .visit-card p { color: var(--ink-muted); margin: 4px 0; }
+  .visit-card .big { color: var(--ink); font-size:1.25rem; font-family:'Playfair Display',serif; font-weight:600; }
+  .visit-card .btn { margin-top: 16px; }
+
+  footer { border-top: 1px solid var(--line); padding: 34px 0; color: var(--ink-muted); font-size:0.86rem; }
+  .footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+
+  .reveal { opacity:0; transform: translateY(18px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in { opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity:1 !important; transform:none !important; }
+    .preview-icon { transition: none; }
+    .swatch { animation: none; }
+  }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .fan-wrap { order:-1; }
+    .nav-links { display:none; }
+    .price-columns { grid-template-columns: 1fr; }
+    .shapes-layout { grid-template-columns: 1fr; }
+    .shape-preview { position:static; order:-1; margin-bottom: 16px; }
+    .visit-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="shape-almond" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="70" fill="var(--bg-alt)"/>
+    <path d="M80 38 C58 38 50 92 62 118 Q80 134 98 118 C110 92 102 38 80 38 Z" fill="var(--accent-blush)" stroke="var(--ink)" stroke-width="2.5"/>
+  </symbol>
+  <symbol id="shape-oval" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="70" fill="var(--bg-alt)"/>
+    <ellipse cx="80" cy="86" rx="27" ry="42" fill="var(--accent-blush)" stroke="var(--ink)" stroke-width="2.5"/>
+  </symbol>
+  <symbol id="shape-square" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="70" fill="var(--bg-alt)"/>
+    <rect x="53" y="46" width="54" height="78" rx="5" fill="var(--accent-blush)" stroke="var(--ink)" stroke-width="2.5"/>
+  </symbol>
+  <symbol id="shape-squoval" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="70" fill="var(--bg-alt)"/>
+    <rect x="53" y="46" width="54" height="78" rx="24" fill="var(--accent-blush)" stroke="var(--ink)" stroke-width="2.5"/>
+  </symbol>
+  <symbol id="shape-coffin" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="70" fill="var(--bg-alt)"/>
+    <path d="M62 46 H98 L112 108 Q80 130 48 108 Z" fill="var(--accent-blush)" stroke="var(--ink)" stroke-width="2.5"/>
+  </symbol>
+</svg>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top">Смальта</a>
+    <ul class="nav-links">
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#prices">Услуги</a></li>
+      <li><a href="#shapes">Формы ногтей</a></li>
+      <li><a href="#visit">Как записаться</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="https://t.me/kamkae" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 3 3 10.5l7 2.5m11-10L13 21l-3-8m11-10L10 13" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Записаться
+    </a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Ногтевая студия · Минск</span>
+        <h1>Смальта</h1>
+        <p class="lead">Маникюр, педикюр и покрытие, которое держится — тихая студия в творческом квартале на Октябрьской.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://t.me/kamkae" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 3 3 10.5l7 2.5m11-10L13 21l-3-8m11-10L10 13" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Записаться в Telegram
+          </a>
+          <a class="btn btn-ghost" href="#prices">Смотреть цены</a>
+        </div>
+      </div>
+      <div class="fan-wrap">
+        <svg width="300" height="210" viewBox="0 0 300 210">
+          <circle class="swatch" style="animation-delay:0s" cx="40" cy="150" r="24" fill="#D8B8A0" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:.3s" cx="68" cy="100" r="24" fill="#A6293A" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:.6s" cx="100" cy="62" r="24" fill="#E3AFAE" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:.9s" cx="138" cy="42" r="24" fill="#6E2438" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:1.2s" cx="178" cy="42" r="24" fill="#F3ECE4" stroke="var(--ink-muted)" stroke-width="2"/>
+          <circle class="swatch" style="animation-delay:.9s" cx="216" cy="62" r="24" fill="#8B9A7C" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:.6s" cx="248" cy="100" r="24" fill="#6B4A3A" stroke="#fff" stroke-width="4"/>
+          <circle class="swatch" style="animation-delay:.3s" cx="276" cy="150" r="24" fill="#C9A876" stroke="#fff" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">О студии</span>
+        <h2>Тишина, свет и внимание к деталям</h2>
+      </div>
+      <div class="about-body reveal">
+        <p>«Смальта» — небольшая студия на двух мастеров, без очередей и без спешки. Каждый визит начинается с чашки чая и разговора о том, чего хочется: аккуратной базы на каждый день или яркого акцента под настроение.</p>
+        <p>Работаем только с проверенными материалами и следим за стерильностью инструментов — это не обсуждается, это стандарт.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="dot-divider"><span></span><span></span><span></span><span></span><span></span></div>
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Услуги</span>
+        <h2>Маникюр, педикюр, дизайн</h2>
+      </div>
+      <div class="price-columns reveal">
+        <div>
+          <div class="price-group">
+            <h3>Маникюр</h3>
+            <div class="price-item"><span class="name">Классический маникюр</span><span class="leader"></span><span class="price">25 руб.</span></div>
+            <div class="price-item"><span class="name">С покрытием гель-лак</span><span class="leader"></span><span class="price">40 руб.</span></div>
+            <div class="price-item"><span class="name">Наращивание (гель)</span><span class="leader"></span><span class="price">65 руб.</span></div>
+            <div class="price-item"><span class="name">Снятие покрытия</span><span class="leader"></span><span class="price">10 руб.</span></div>
+          </div>
+          <div class="price-group">
+            <h3>Педикюр</h3>
+            <div class="price-item"><span class="name">Классический педикюр</span><span class="leader"></span><span class="price">35 руб.</span></div>
+            <div class="price-item"><span class="name">С покрытием гель-лак</span><span class="leader"></span><span class="price">50 руб.</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="price-group">
+            <h3>Дизайн (к покрытию)</h3>
+            <div class="price-item"><span class="name">Французский маникюр</span><span class="leader"></span><span class="price">+8 руб.</span></div>
+            <div class="price-item"><span class="name">Втирка / блёстки</span><span class="leader"></span><span class="price">+6 руб.</span></div>
+            <div class="price-item"><span class="name">Роспись, 1 ноготь</span><span class="leader"></span><span class="price">+5 руб.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shapes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Формы ногтей</span>
+        <h2>Не знаешь, что выбрать?</h2>
+        <p class="section-sub">Наведи или коснись формы — справа увидишь силуэт.</p>
+      </div>
+      <div class="shapes-layout reveal">
+        <div class="shape-list">
+          <div class="shape-item active" data-shape="shape-almond">
+            <div><div class="shape-name">Миндаль</div><div class="shape-desc">Заострённый кончик, визуально удлиняет пальцы</div></div>
+          </div>
+          <div class="shape-item" data-shape="shape-oval">
+            <div><div class="shape-name">Овал</div><div class="shape-desc">Мягкие линии, универсальный вариант почти для любой длины</div></div>
+          </div>
+          <div class="shape-item" data-shape="shape-square">
+            <div><div class="shape-name">Квадрат</div><div class="shape-desc">Чёткие прямые углы, для крепких ногтей средней длины</div></div>
+          </div>
+          <div class="shape-item" data-shape="shape-squoval">
+            <div><div class="shape-name">Скруглённый квадрат</div><div class="shape-desc">Компромисс между квадратом и овалом, меньше крошится по углам</div></div>
+          </div>
+          <div class="shape-item" data-shape="shape-coffin">
+            <div><div class="shape-name">Балерина</div><div class="shape-desc">Зауженный силуэт с прямым срезом, эффектно на длинных ногтях</div></div>
+          </div>
+        </div>
+        <div class="shape-preview">
+          <svg class="preview-icon" id="previewIcon" viewBox="0 0 160 160"><use href="#shape-almond"></use></svg>
+          <p class="preview-caption" id="previewCaption">Миндаль</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Как записаться</span>
+        <h2>Ждём тебя</h2>
+      </div>
+      <div class="visit-grid reveal">
+        <div class="visit-card">
+          <h3>Режим работы</h3>
+          <p class="big">10:00 – 20:00</p>
+          <p>Ежедневно, по записи</p>
+        </div>
+        <div class="visit-card">
+          <h3>Адрес и связь</h3>
+          <p class="big">ул. Октябрьская, 5</p>
+          <p>Минск · Telegram: @kamkae</p>
+          <a class="btn btn-primary btn-sm" href="https://t.me/kamkae" target="_blank" rel="noopener">Записаться</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© Смальта, ногтевая студия</span>
+    <span>ул. Октябрьская, 5, Минск · Telegram: @kamkae</span>
+  </div>
+</footer>
+
+<script>
+  var previewIcon = document.getElementById('previewIcon');
+  var previewUse = previewIcon.querySelector('use');
+  var previewCaption = document.getElementById('previewCaption');
+  var shapeItems = document.querySelectorAll('.shape-item');
+
+  function setPreview(el) {
+    var shape = el.getAttribute('data-shape');
+    var name = el.querySelector('.shape-name').textContent;
+    previewIcon.classList.add('swap');
+    setTimeout(function () {
+      previewUse.setAttribute('href', '#' + shape);
+      previewCaption.textContent = name;
+      previewIcon.classList.remove('swap');
+    }, 160);
+    shapeItems.forEach(function (i) { i.classList.remove('active'); });
+    el.classList.add('active');
+  }
+
+  shapeItems.forEach(function (el) {
+    el.addEventListener('mouseenter', function () { setPreview(el); });
+    el.addEventListener('click', function () { setPreview(el); });
+  });
+
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    reveals.forEach(function (i) { io.observe(i); });
+  } else {
+    reveals.forEach(function (i) { i.classList.add('in'); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FLORA — цветочный магазин в Минске. Букеты, композиции и доставка цветов.">
+  <meta name="theme-color" content="#173d2b">
+  <title>FLORA — цветы с характером</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#173d2b;--deep:#0d241a;--cream:#f7f5ed;--sage:#dce8d7;--lime:#b8d69b;--white:#fff}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
+    a{text-decoration:none;color:inherit}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{position:absolute;top:0;left:0;right:0;z-index:5;color:#fff}.nav{height:82px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font:600 27px "Playfair Display",serif;letter-spacing:.06em}.links{display:flex;gap:30px;font-size:14px}.links a{opacity:.9}.links a:hover{opacity:1}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 21px;font-weight:600;font-size:14px;transition:.25s;cursor:pointer;border:0}
+    .btn-light{background:#fff;color:var(--ink)}.btn-light:hover{transform:translateY(-2px)}.btn-dark{background:var(--ink);color:#fff}
+    .hero{min-height:760px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(120deg,rgba(8,34,23,.94),rgba(18,67,44,.45)),url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1800&q=85") center/cover}
+    .hero:after{content:"";position:absolute;inset:auto -10% -180px;height:330px;background:var(--cream);border-radius:50% 50% 0 0/45% 45% 0 0}
+    .hero-content{position:relative;z-index:2;color:#fff;max-width:800px;text-align:center;padding:110px 0 160px}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;opacity:.8}
+    h1{font:600 clamp(54px,9vw,105px)/.95 "Playfair Display",serif;margin:18px 0 24px}.hero p{font-size:18px;line-height:1.7;max-width:620px;margin:0 auto 32px;color:#edf5ea}
+    section{padding:95px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}.section-head h2{font:600 clamp(36px,5vw,58px)/1 "Playfair Display",serif;margin:0}.muted{color:#5e7265;max-width:490px;line-height:1.7}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 12px 40px #173d2b0e}.card img{width:100%;height:310px;object-fit:cover;display:block}.card-body{padding:24px}.card h3{font:600 25px "Playfair Display",serif;margin:0 0 8px}.price{font-weight:600;margin-top:18px}
+    .story{background:var(--sage)}.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.story img{width:100%;height:570px;object-fit:cover;border-radius:30px}.story h2{font:600 58px/1 "Playfair Display",serif;margin:0 0 22px}.story p{line-height:1.8;color:#4f6658}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{padding:30px;border:1px solid #173d2b1c;border-radius:24px}.num{font-size:13px;opacity:.55}.step h3{font:600 27px "Playfair Display",serif;margin:25px 0 10px}.step p{line-height:1.7;color:#5e7265}
+    .cta{background:var(--deep);color:#fff;border-radius:34px;padding:70px;text-align:center}.cta h2{font:600 52px/1.05 "Playfair Display",serif;margin:0 0 18px}.cta p{color:#bfd0c4;margin:0 auto 28px}
+    footer{padding:35px 0;color:#6b7b71;font-size:13px;display:flex;justify-content:space-between}
+    @media(max-width:800px){.links{display:none}.wrap{width:min(100% - 28px,1160px)}.hero{min-height:690px}.hero-content{padding-top:120px}.grid,.steps,.story-grid{grid-template-columns:1fr}.story img{height:390px}.story h2{font-size:43px}.section-head{display:block}.section-head .muted{margin-top:15px}.cta{padding:48px 24px}.cta h2{font-size:40px}section{padding:70px 0}.card img{height:280px}footer{gap:15px;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#">FLORA</a><nav class="links"><a href="#bouquets">Букеты</a><a href="#about">О нас</a><a href="#delivery">Доставка</a></nav><a class="btn btn-light" href="https://t.me/kamkae" target="_blank" rel="noopener">Заказать</a></div></header>
+<main>
+<section class="hero"><div class="hero-content"><div class="eyebrow">Цветочная мастерская · Минск</div><h1>Цветы, которые<br>остаются в памяти.</h1><p>Авторские букеты из сезонных цветов — спокойно, естественно и с вниманием к каждой детали.</p><a class="btn btn-light" href="#bouquets">Смотреть букеты</a></div></section>
+<section id="bouquets"><div class="wrap"><div class="section-head"><h2>Выберите настроение</h2><p class="muted">Три готовых направления, которые можно изменить под повод, цвет и бюджет.</p></div>
+<div class="grid">
+<article class="card"><img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1000&q=85" alt="Нежный цветочный букет" loading="lazy"><div class="card-body"><h3>Тихая нежность</h3><p class="muted">Пастельные оттенки, лёгкая форма и много воздуха.</p><div class="price">от 85 BYN</div></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=1000&q=85" alt="Яркий букет цветов" loading="lazy"><div class="card-body"><h3>Сочный акцент</h3><p class="muted">Контрастные сезонные цветы для заметного подарка.</p><div class="price">от 110 BYN</div></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1000&q=85" alt="Минималистичная цветочная композиция" loading="lazy"><div class="card-body"><h3>Минимализм</h3><p class="muted">Лаконичная композиция для дома, офиса или события.</p><div class="price">от 70 BYN</div></div></article>
+</div></div></section>
+<section id="about" class="story"><div class="wrap story-grid"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1200&q=85" alt="Флорист собирает композицию" loading="lazy"><div><div class="eyebrow">Про FLORA</div><h2>Красиво — не значит сложно.</h2><p>Мы собираем букеты так, чтобы они выглядели естественно и дорого без лишней декоративности. Работаем с сезонными цветами и каждый заказ собираем вручную.</p><a class="btn btn-dark" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать флористу</a></div></div></section>
+<section id="delivery"><div class="wrap"><div class="section-head"><h2>Как заказать</h2><p class="muted">От идеи до готового букета — несколько простых шагов.</p></div><div class="steps"><div class="step"><span class="num">01</span><h3>Расскажите</h3><p>Повод, любимые цвета, размер и желаемая сумма.</p></div><div class="step"><span class="num">02</span><h3>Мы соберём</h3><p>Предложим вариант композиции и согласуем детали.</p></div><div class="step"><span class="num">03</span><h3>Доставим</h3><p>Привезём букет по Минску в удобное для вас время.</p></div></div></div></section>
+<section><div class="wrap"><div class="cta"><div class="eyebrow">FLORA · Минск</div><h2>Пусть сегодня будет<br>немного красивее.</h2><p>Закажите букет в Telegram — ответим и подберём вариант под ваш повод.</p><a class="btn btn-light" href="https://t.me/kamkae" target="_blank" rel="noopener">Заказать букет</a></div></div></section>
+</main>
+<footer class="wrap"><span>© 2026 FLORA</span><span>Цветочная мастерская · Минск</span></footer>
+</body></html>
