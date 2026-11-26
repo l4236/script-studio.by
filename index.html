@@ -1,559 +1,569 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<link rel="icon" type="image/png" href="/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Скрипт — сайты с нуля на коде</title>
-  <meta name="description" content="Скрипт — создание современных сайтов под ключ в Минске. Сайты-визитки и многостраничные сайты, адаптивный дизайн и публикация сайта.">
+<title>Создание сайтов в Минске под ключ недорого — Скрипт</title>
+<meta name="description" content="Создание сайтов в Минске под ключ недорого: сайт-визитка, лендинг, сайт для кафе, салона красоты, парикмахерской. Сайт-визитка от 150 руб., многостраничный сайт от 280 руб. Дизайн и адаптив под телефон. Готово за 2 недели, срочно — за 3–5 дней.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://script-studio.by/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Скрипт — сайты для бизнеса в Минске">
+<meta property="og:description" content="Сайт-визитка от 150 руб. Дизайн и адаптив под телефон. Минск.">
+<meta property="og:url" content="https://script-studio.by/">
+<meta property="og:image" content="https://script-studio.by/work-smalta.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Скрипт","description":"Создание сайтов для бизнеса в Минске: сайты-визитки, лендинги и многостраничные сайты под ключ.","url":"https://script-studio.by/","image":"https://script-studio.by/work-smalta.webp","areaServed":{"@type":"City","name":"Минск"},"address":{"@type":"PostalAddress","addressLocality":"Минск","addressCountry":"BY"},"priceRange":"от 150 BYN","sameAs":["https://t.me/kamkae"],
+"makesOffer":[{"@type":"Offer","name":"Сайт-визитка","price":"150","priceCurrency":"BYN"},{"@type":"Offer","name":"Многостраничный сайт","price":"280","priceCurrency":"BYN"}]}
+</script>
 <style>
-  :root {
-    --bg: #FDF6F0;
-    --bg-alt: #F5E8DD;
-    --card: #FFFFFF;
-    --ink: #3A2E28;
-    --ink-muted: #8B7A6E;
-    --coral: #F2967B;
-    --lavender: #9B93D9;
-    --line: rgba(58,46,40,0.12);
-    --max: 1080px;
-    --ease: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: 'Mulish', sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased;
-  }
-  h1, h2 { font-family: 'Nunito', sans-serif; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
-  a { color: inherit; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-  .eyebrow { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender); font-weight: 700; margin-bottom: 12px; display: block; }
-  :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
-
-  header { position: sticky; top: 0; z-index: 20; background: rgba(253,246,240,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; max-width: var(--max); margin: 0 auto; gap: 12px; }
-  .brand { font-family:'Nunito',sans-serif; font-size:1.2rem; font-weight:800; text-decoration:none; }
-  .nav-links { list-style:none; display:flex; gap:22px; margin:0; padding:0; }
-  .nav-links a { text-decoration:none; font-size:0.9rem; color: var(--ink-muted); transition: color .3s var(--ease); }
-  .nav-links a:hover { color: var(--ink); }
-
-  .btn { display:inline-flex; align-items:center; gap:9px; padding: 14px 26px; border-radius: 999px; font-size:0.92rem; font-weight:700; text-decoration:none; transition: transform .35s var(--ease), box-shadow .35s var(--ease); border: none; cursor:pointer; }
-  .btn-primary { background: var(--coral); color: #fff; box-shadow: 0 8px 22px rgba(242,150,123,0.35); animation: glowPulse 3.2s ease-in-out infinite; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(242,150,123,0.55); }
-  @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 8px 22px rgba(242,150,123,0.3); }
-    50% { box-shadow: 0 8px 30px rgba(242,150,123,0.55); }
-  }
-  .btn-ghost { background: var(--card); border: 1.5px solid var(--line); color: var(--ink); }
-  .btn-ghost:hover { border-color: var(--lavender); color: var(--lavender); }
-  .btn-sm { padding: 10px 20px; font-size: 0.82rem; }
-
-  .hero { padding: 56px 0 36px; }
-  .hero .wrap { display:grid; grid-template-columns: 1.1fr 0.9fr; gap:36px; align-items:center; }
-  .hero h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.05; margin: 8px 0 18px; }
-  .hero p.lead { color: var(--ink-muted); font-size: clamp(0.98rem, 2vw, 1.08rem); max-width: 44ch; margin-bottom: 28px; }
-  .btn-row { display:flex; gap:14px; flex-wrap:wrap; }
-
-  .petal-wrap { display:flex; justify-content:center; }
-  .petals { animation: breathe 5.5s ease-in-out infinite; transform-origin: 150px 150px; }
-  @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.045); } }
-
-  section { padding: clamp(48px, 8vw, 76px) 0; }
-  .section-head { max-width: 50ch; margin-bottom: 20px; }
-  .section-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.15rem); }
-  .section-sub { color: var(--ink-muted); margin-top: 10px; font-size: 0.98rem; }
-
-  .portfolio-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
-  .p-card { background: var(--card); border-radius: 20px; padding: 26px; border: 1px solid var(--line); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
-  .p-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(155,147,217,0.18); }
-  .p-card h3 { font-family:'Nunito',sans-serif; font-size: 1.2rem; margin-bottom: 8px; font-weight:800; }
-  .p-card p { color: var(--ink-muted); font-size: 0.95rem; margin: 0 0 16px; }
-  .swatches { display:flex; gap:6px; margin-bottom: 14px; }
-  .swatches span { width: 15px; height: 15px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.06); }
-  .p-card a.p-link { font-size: 0.88rem; color: var(--coral); text-decoration:none; font-weight:700; }
-  .p-card a.p-link:hover { text-decoration: underline; }
-
-  .service-list { margin-top: 36px; display:flex; flex-direction:column; }
-  .service-item { display:flex; gap:18px; padding: 18px 0; border-top: 1px solid var(--line); align-items:baseline; }
-  .service-item:last-child { border-bottom: 1px solid var(--line); }
-  .service-num { font-family:'Nunito',sans-serif; color: var(--lavender); font-weight:800; font-size: 0.95rem; flex-shrink:0; width: 30px; }
-  .service-text { font-size: 1rem; }
-
-  .price-groups { margin-top: 36px; display:grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .price-group h3 { font-size: 0.98rem; font-weight: 800; color: var(--lavender); margin-bottom: 4px; font-family:'Nunito',sans-serif; }
-  .price-item { display:flex; align-items:baseline; gap:10px; padding: 11px 0; }
-  .price-item .name { font-weight: 500; }
-  .price-item .leader { flex:1; border-bottom: 2px dotted rgba(139,122,110,0.35); margin-bottom: 5px; }
-  .price-item .price { color: var(--coral); font-weight:800; white-space:nowrap; font-size: 1.02rem; }
-  .price-note { margin-top: 20px; color: var(--ink-muted); font-size: 0.9rem; grid-column: 1 / -1; }
-
-  .about-body { max-width: 60ch; color: var(--ink-muted); font-size: 1.02rem; margin-top: 8px; }
-  .about-body p + p { margin-top: 14px; }
-
-  footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--ink-muted); font-size:0.86rem; }
-  .footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-
-  .reveal { opacity:0; transform: translateY(16px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-  .reveal.in { opacity:1; transform:none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity:1 !important; transform:none !important; }
-    .btn-primary { animation: none; }
-    .petals { animation: none; }
-  }
-
-  @media (max-width: 860px) {
-    .hero { padding-top: 40px; }
-    .hero .wrap { grid-template-columns: 1fr; }
-    .petal-wrap { order:-1; margin-bottom: 8px; }
-    .petal-wrap svg { width: 180px; height: 180px; }
-    .nav-links { display:none; }
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .price-groups { grid-template-columns: 1fr; gap: 8px; }
-  }
-
-  @media (max-width: 420px) {
-    .btn-row { flex-direction: column; align-items: stretch; }
-    .btn-row .btn { justify-content: center; }
-  }
-.seo-text {
-  padding: 70px 0;
+:root{
+  --bg:#0B0F1E; --bg2:#10162B; --card:#141B33; --card2:#1A2240;
+  --line:rgba(255,255,255,.09); --ink:#F3F4FA; --muted:#9AA3C0; --dim:#6B7494;
+  --coral:#F2967B; --lav:#9B93D9; --grad:linear-gradient(135deg,#F2967B 0%,#C98FC0 50%,#9B93D9 100%);
+  --max:1180px; --r:22px;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5) 50%,transparent 51%),
+   radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.35) 50%,transparent 51%),
+   radial-gradient(1px 1px at 55% 15%,rgba(255,255,255,.4) 50%,transparent 51%),
+   radial-gradient(1px 1px at 75% 55%,rgba(255,255,255,.3) 50%,transparent 51%),
+   radial-gradient(1px 1px at 90% 85%,rgba(255,255,255,.4) 50%,transparent 51%),
+   radial-gradient(1.5px 1.5px at 85% 10%,rgba(255,255,255,.5) 50%,transparent 51%),
+   radial-gradient(1px 1px at 45% 90%,rgba(255,255,255,.3) 50%,transparent 51%),
+   radial-gradient(1px 1px at 5% 60%,rgba(255,255,255,.35) 50%,transparent 51%);
+  background-size:420px 420px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:60px 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);padding:7px 14px;border-radius:99px}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 10px var(--coral)}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(32px,4.6vw,54px);margin-bottom:18px}
+.lead{color:var(--muted);font-size:19px;max-width:620px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16px;padding:17px 30px;border-radius:14px;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;font-family:inherit}
+.btn-main{background:var(--grad);color:#1A1330;box-shadow:0 10px 34px rgba(242,150,123,.35)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(242,150,123,.5)}
+.btn-ghost{border-color:rgba(255,255,255,.22);color:var(--ink);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn svg{width:19px;height:19px}
 
-.seo-text h2 {
-  margin-bottom: 20px;
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(11,15,30,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;flex-direction:column;line-height:1.1}
+.logo b{font-size:23px;font-weight:800;letter-spacing:-.02em}
+.logo small{font-size:11.5px;color:var(--dim);font-weight:600}
+.menu{display:flex;gap:30px;font-size:15px;font-weight:600;color:var(--muted)}
+.menu a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.icon-btn svg{width:19px;height:19px}
+.nav .btn{padding:12px 20px;font-size:14.5px}
+
+/* hero */
+.hero{padding:130px 0 50px;overflow:hidden}
+.hero .glow{position:absolute;width:720px;height:720px;right:-200px;top:40px;background:radial-gradient(circle,rgba(155,147,217,.28),transparent 62%);filter:blur(10px);pointer-events:none}
+.hero .glow2{position:absolute;width:520px;height:520px;left:-220px;top:300px;background:radial-gradient(circle,rgba(242,150,123,.16),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center;position:relative}
+.hero h1{font-size:clamp(40px,5.6vw,68px);margin:22px 0 22px}
+.hero .lead{margin-bottom:34px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:14px;color:var(--dim)}
+.trust span::before{content:"✓";color:var(--coral);font-weight:800;margin-right:7px}
+.price-chip{display:inline-flex;margin-top:22px;font-size:14px;color:var(--muted);border:1px dashed rgba(155,147,217,.45);padding:8px 14px;border-radius:10px;background:rgba(155,147,217,.07)}
+
+/* mockup */
+.mock{position:relative;height:470px}
+.browser{position:absolute;border-radius:16px;overflow:hidden;background:#1B2240;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.browser .bar{height:28px;display:flex;align-items:center;gap:6px;padding:0 12px;background:#20294A}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:#3A4570}
+.browser .bar i:nth-child(1){background:#F2967B}.browser .bar i:nth-child(2){background:#E8C07A}.browser .bar i:nth-child(3){background:#9B93D9}
+.b1{width:88%;left:0;top:20px;transform:rotate(-2deg);animation:float 7s ease-in-out infinite}
+.b2{width:70%;right:-4%;top:220px;transform:rotate(3deg);animation:float 8s ease-in-out infinite .8s}
+.phone{position:absolute;width:150px;right:8%;top:-10px;border-radius:26px;padding:7px;background:#20294A;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px rgba(0,0,0,.6);animation:float 6s ease-in-out infinite .4s}
+.phone img{border-radius:20px}
+.bubble{position:absolute;left:4%;bottom:6px;display:flex;align-items:center;gap:12px;background:rgba(20,27,51,.92);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:0 20px 50px rgba(0,0,0,.5);backdrop-filter:blur(8px);font-size:14px;animation:float 9s ease-in-out infinite 1.2s}
+.bubble b{display:block;font-size:15px}
+.bubble .dot{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#1A1330;font-weight:800}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+
+/* services */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}
+.card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:34px 30px;position:relative;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(155,147,217,.4)}
+.ico{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;margin-bottom:22px;background:radial-gradient(circle,rgba(155,147,217,.25),rgba(155,147,217,.05));border:1px solid rgba(155,147,217,.35);box-shadow:0 0 30px rgba(155,147,217,.25)}
+.ico svg{width:24px;height:24px;stroke:#C9C3FF}
+.card h3{font-size:22px;margin-bottom:12px}
+.card p{color:var(--muted);font-size:15.5px;margin-bottom:20px}
+.ticks{list-style:none;display:grid;gap:10px;font-size:15px}
+.ticks li{padding-left:22px;position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 8px var(--coral)}
+.ticks li:nth-child(2n)::before{background:var(--lav);box-shadow:0 0 8px var(--lav)}
+.card .from{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--dim)}
+.card .from b{font-size:24px;color:var(--ink)}
+
+/* works */
+.work{display:grid;grid-template-columns:1.25fr 1fr;gap:50px;align-items:center;padding:32px 0;border-bottom:1px solid var(--line)}
+.work:last-child{border-bottom:0}
+.work .shot{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 70px rgba(0,0,0,.45);display:block;transition:transform .3s}
+.work .shot:hover{transform:scale(1.015)}
+.work .shot .bar{height:26px;background:#20294A;display:flex;align-items:center;gap:6px;padding:0 12px}
+.work .shot .bar i{width:8px;height:8px;border-radius:50%;background:#3A4570}
+.work h3{font-size:30px;margin-bottom:8px}
+.work .type{color:var(--muted);margin-bottom:22px}
+.facts{display:grid;gap:12px;margin-bottom:28px}
+.facts div{display:grid;grid-template-columns:120px 1fr;gap:12px;font-size:15px;padding-bottom:12px;border-bottom:1px dashed var(--line)}
+.facts dt{color:var(--dim)}
+.facts dd{font-weight:600;color:#D9D6FF}
+.work .links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.work .links .btn{padding:14px 24px}
+.dashed{color:var(--muted);border-bottom:1px dashed var(--dim);font-size:15px}
+.dashed:hover{color:var(--ink)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:32px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-size:15px;font-weight:800;display:inline-block;margin-bottom:16px;padding:6px 12px;border-radius:10px;background:var(--grad);color:#1A1330}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted)}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 360px;gap:30px;margin-top:30px;background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:28px;padding:40px}
+.q{margin-bottom:30px}
+.q h3{font-size:19px;margin-bottom:14px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:block;padding:11px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.16);font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;user-select:none}
+.opt span:hover{border-color:rgba(255,255,255,.35);color:var(--ink)}
+.opt input:checked+span{background:rgba(242,150,123,.14);border-color:var(--coral);color:var(--ink)}
+.opt input:focus-visible+span{outline:2px solid var(--lav);outline-offset:2px}
+.result{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:30px;align-self:start;position:sticky;top:100px}
+.result small{color:var(--dim);font-size:14px}
+.result .sum{font-size:46px;font-weight:800;margin:6px 0 4px;letter-spacing:-.02em}
+.result .days{color:var(--muted);font-size:15px;margin-bottom:22px}
+.result ul{list-style:none;display:grid;gap:8px;font-size:14.5px;color:var(--muted);margin-bottom:26px}
+.result ul li::before{content:"✓ ";color:var(--coral);font-weight:800}
+.result .btn{width:100%}
+.result .note{font-size:12.5px;color:var(--dim);margin-top:14px;text-align:center}
+
+/* included + after */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:0}
+.plist{list-style:none}
+.plist li{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px dashed var(--line);font-size:16px}
+.plist li:last-child{border-bottom:0}
+.plist b{color:var(--coral);white-space:nowrap}
+.card h3.sm{font-size:20px;margin-bottom:6px}
+
+/* about */
+.about{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center}
+.photo{aspect-ratio:4/5;max-width:100%;border-radius:28px;background:var(--grad);position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 30px 80px rgba(155,147,217,.25)}
+.photo span{font-size:120px;font-weight:800;color:rgba(26,19,48,.55)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.about p{color:var(--muted);margin-bottom:16px;font-size:17.5px}
+.nums{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap}
+.nums b{display:block;font-size:38px;font-weight:800}
+.nums span{color:var(--dim);font-size:14px}
+
+/* faq */
+.faq{max-width:860px;margin-top:20px}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 50px 24px 0;font-size:19px;font-weight:700;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:18px;font-size:28px;font-weight:400;color:var(--coral);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 40px 24px 0;font-size:16.5px}
+
+/* final cta */
+.final{text-align:center;border-radius:32px;padding:80px 30px;background:radial-gradient(ellipse at top,rgba(155,147,217,.3),transparent 60%),linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);overflow:hidden}
+.final .lead{margin:0 auto 34px}
+.final .cta-row{justify-content:center}
+
+.seo-text{max-width:860px}.seo-text h2{font-size:clamp(24px,3vw,32px);margin-bottom:14px}.seo-text p{color:var(--muted);font-size:15.5px;margin-bottom:12px}.seo-text h3{font-size:17px;margin:18px 0 6px}
+footer{padding:40px 0 50px;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:30px}
+footer a:hover{color:var(--ink)}
+
+.tg-float{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#2AABEE;display:grid;place-items:center;box-shadow:0 0 0 8px rgba(42,171,238,.15),0 12px 30px rgba(0,0,0,.4);transition:transform .2s}
+.tg-float:hover{transform:scale(1.07)}
+.tg-float svg{width:28px;height:28px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.b1,.b2,.phone,.bubble{animation:none}}
+
+@media(max-width:1020px){
+  .menu{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .mock{height:400px;max-width:620px;width:100%;margin:0 auto}
+  .cards3{grid-template-columns:1fr}
+  .work{grid-template-columns:1fr;gap:28px}
+  .steps{grid-template-columns:1fr 1fr}
+  .calc{grid-template-columns:1fr;padding:28px}
+  .result{position:static}
+  .two{grid-template-columns:1fr}
+  .about{grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:start}
 }
-
-.seo-text p {
-  max-width: 800px;
-  margin: 0 0 16px;
-  line-height: 1.7;
-  opacity: 0.85;
+@media(max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  section{padding:40px 0}
+  .hero{padding:100px 0 30px}
+  .nav{height:66px}
+  .nav .btn{display:none}
+  .lead{font-size:17px}
+  .cta-row .btn{width:100%}
+  .mock{height:300px}
+  .phone{width:105px;border-radius:20px;padding:5px}.phone img{border-radius:16px}
+  .b2{top:150px}
+  .bubble{font-size:12.5px;padding:9px 12px}.bubble b{font-size:13.5px}.bubble .dot{width:32px;height:32px}
+  .steps{grid-template-columns:1fr}
+  .facts div{grid-template-columns:100px 1fr}
+  .work h3{font-size:25px}
+  .calc{padding:20px;border-radius:22px}
+  .final{padding:56px 20px}
+  summary{font-size:17px}
+  .tg-float{width:54px;height:54px;right:16px;bottom:16px}
+  .about{grid-template-columns:110px minmax(0,1fr);gap:16px}
+  .photo{border-radius:18px}
+  .about h2{font-size:28px}
+  .about p{font-size:15.5px}
+  .nums{gap:18px}
+  .nums b{font-size:28px}
 }
-/* Reviews */
-.reviews-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
-.review-card{background:linear-gradient(145deg,var(--card),rgba(155,147,217,.055));border-radius:18px;padding:18px 20px;border:1px solid var(--line);box-shadow:0 10px 26px rgba(58,46,40,.045);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.review-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(155,147,217,.13)}
-.review-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:7px}
-.review-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.96rem}
-.review-date{color:var(--ink-muted);font-size:.72rem;margin-top:1px}
-.review-stars{color:var(--coral);letter-spacing:1px;white-space:nowrap;font-size:.82rem}
-.review-text{margin:0;color:var(--ink-muted);line-height:1.55;font-size:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.review-form{margin-top:34px;max-width:720px;padding-top:4px}
-.review-form-grid{display:grid;grid-template-columns:1fr 180px;gap:12px}
-.review-input,.review-textarea,.review-select{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;padding:12px 14px;font:inherit;outline:none}
-.review-input:focus,.review-textarea:focus,.review-select:focus{border-color:var(--lavender);box-shadow:0 0 0 3px rgba(155,147,217,.1)}
-.review-textarea{min-height:110px;resize:vertical;margin-top:12px}
-.review-submit{margin-top:12px}
-.review-note{color:var(--ink-muted);font-size:.78rem;margin-top:8px}
-.review-empty{color:var(--ink-muted);margin-top:22px}
-.review-more-wrap{text-align:center;margin-top:20px}
-.review-more{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 18px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer;transition:.25s}
-.review-more:hover{border-color:var(--lavender);color:var(--lavender);transform:translateY(-1px)}
-.review-status{font-size:.84rem;margin-top:10px;color:var(--ink-muted)}
-@media(max-width:700px){.reviews-grid{grid-template-columns:1fr}.review-form-grid{grid-template-columns:1fr}}
-
 </style>
 </head>
 <body>
 
-<header>
-  <nav class="nav">
-    <a class="brand" href="#top">Скрипт</a>
-    <ul class="nav-links">
-      <li><a href="#portfolio">Портфолио</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#about">Обо мне</a></li><li><a href="#reviews">Отзывы</a></li>
-    </ul>
-    <a class="btn btn-primary btn-sm" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать</a>
-  </nav>
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo"><b>Скрипт</b><small>Сайты для бизнеса · Минск</small></a>
+    <nav class="menu">
+      <a href="#services">Услуги</a>
+      <a href="#works">Работы</a>
+      <a href="#calc">Стоимость</a>
+      <a href="#about">Обо мне</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="nav-right">
+      <a class="icon-btn" href="https://t.me/kamkae" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="#2AABEE"><path d="M9.8 15.3l-.4 5.6c.6 0 .8-.3 1.1-.6l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-.9L24.5 3c.3-1.4-.5-2-1.5-1.6L1.2 9.8C-.2 10.4-.2 11.2 1 11.6l5.6 1.7L19.5 5c.6-.4 1.2-.2.7.2"/></svg></a>
+      <a class="btn btn-main" href="#calc">Рассчитать стоимость</a>
+    </div>
+  </div>
 </header>
 
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="eyebrow">Небольшая студия одного человека · Минск</span>
-        <h1>Скрипт</h1>
-        <p class="lead">Пишу сайты с нуля кодом — быстро, по делу, без шаблонов и конструкторов.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://t.me/kamkae" target="_blank" rel="noopener">Написать в Telegram</a>
-          <a class="btn btn-ghost" href="#portfolio">Смотреть работы</a>
-        </div>
-      </div>
-      <div class="petal-wrap">
-        <svg width="220" height="220" viewBox="0 0 300 300">
-          <g class="petals">
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(0 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(45 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(90 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(135 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(180 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(225 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--coral)" opacity="0.9" transform="rotate(270 150 150)"/>
-            <ellipse cx="150" cy="80" rx="20" ry="48" fill="var(--lavender)" opacity="0.85" transform="rotate(315 150 150)"/>
-            <circle cx="150" cy="150" r="22" fill="var(--card)" stroke="var(--coral)" stroke-width="3"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </section>
 
-  <section id="portfolio">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Портфолио</span>
-        <h2>Последние работы</h2>
+<!-- HERO -->
+<section class="hero">
+  <div class="glow"></div><div class="glow2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i></i>Студия веб-разработки · Минск</span>
+      <h1>Сайт для вашего бизнеса <span class="grad">под ключ</span></h1>
+      <p class="lead">Красивый сайт, который приводит клиентов: удобен на телефоне, с кнопкой записи в Telegram. Без шаблонов и конструкторов.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#calc">Рассчитать стоимость</a>
+        <a class="btn btn-ghost" href="#works">Смотреть работы</a>
       </div>
-      <div class="portfolio-grid reveal">
-        <div class="p-card">
-          <div class="swatches"><span style="background:#F7F3EC"></span><span style="background:#A32638"></span><span style="background:#5C6B4E"></span><span style="background:#D9A441"></span></div>
-          <h3>Тихий двор</h3>
-          <p>Кафе с белорусским меню, кнопкой записи в Telegram и интерактивными карточками блюд при наведении.</p>
-          <!-- Ссылка временно скрыта: копии сайта нет. Вернуть: <a class="p-link" href="https://cafe-tihiy-dvor.netlify.app" target="_blank" rel="noopener">Смотреть сайт →</a> -->
-        </div>
-        <div class="p-card">
-          <div class="swatches"><span style="background:#F6F1EC"></span><span style="background:#7A2E3A"></span><span style="background:#D98A93"></span><span style="background:#B08D57"></span></div>
-          <h3>Смальта</h3>
-          <p>Ногтевая студия в Минске с гидом по формам ногтей и плавным интерактивным меню услуг.</p>
-          <a class="p-link" href="/smalta.html" target="_blank" rel="noopener">Смотреть сайт →</a>
-          </div>
-          <div class="p-card">
-  <div class="swatches">
-  <span style="background:#F3D6E4"></span>
-  <span style="background:#B86B8B"></span>
-  <span style="background:#5A2940"></span>
-</div>
-  <h3>FLORA</h3>
-  <p>Цветочная мастерская в Минске с каталогом букетов и удобным заказом.</p>
-  <a class="p-link" href="/flora.html" target="_blank" rel="noopener">Смотреть сайт →</a>
-</div>
-
-<div class="p-card">
-  <div class="swatches">
-    <span style="background:#E8E3DA"></span>
-    <span style="background:#4B4A46"></span>
-    <span style="background:#171717"></span>
-  </div>
-  <h3>FORMA</h3>
-  <p>Современная архитектурная студия с минималистичным премиальным дизайном.</p>
-  <a class="p-link" href="/atelier.html" target="_blank" rel="noopener">Смотреть сайт →</a>
-</div>
-          
-        </div>
-      </div>
+      <div class="trust"><span>Быстро отвечаю в Telegram</span><span>Цена фиксируется до старта</span><span>2 круга правок включены</span><span>Готово за 2 недели</span></div>
+      <div class="price-chip">Сайт-визитка — от 150 руб. · Многостраничный — от 280 руб.</div>
     </div>
-  </section>
-  
- <section class="seo-text">
-  <div class="wrap">
-    <h2>Создание сайтов в Минске</h2>
-    <p>
-      Разрабатываю современные сайты в Минске для бизнеса, специалистов
-      и небольших компаний. Создаю сайты-визитки, лендинги и
-      многостраничные сайты с нуля на коде.
-    </p>
-    <p>
-      Каждый сайт адаптируется под телефоны, планшеты и компьютеры.
-      Помогаю пройти путь от идеи до запуска: разработка,
-      базовая SEO-настройка, подключение домена и публикация сайта.
-    </p>
+    <div class="mock" aria-hidden="true">
+      <div class="browser b1"><div class="bar"><i></i><i></i><i></i></div><img src="work-flora.webp" alt="Пример сайта цветочной мастерской"></div>
+      <div class="browser b2"><div class="bar"><i></i><i></i><i></i></div><img src="work-atelier.webp" alt=""></div>
+      <div class="phone"><img src="work-smalta-m.webp" alt=""></div>
+      <div class="bubble"><div class="dot">✓</div><div><b>Новая заявка с сайта</b>Запись на пятницу, 14:00</div></div>
+    </div>
   </div>
 </section>
-  <section id="services">
-    <div class="wrap">
-      
-      <div class="section-head reveal">
-        <span class="eyebrow">Услуги</span>
-        <h2>Что делаю</h2>
-      </div>
-      <div class="service-list reveal">
-        <div class="service-item"><span class="service-num">01</span><span class="service-text">Сайт с нуля на коде — без шаблонов и конструкторов</span></div>
-        <div class="service-item"><span class="service-num">02</span><span class="service-text">Адаптивный дизайн — одинаково хорошо на телефоне и компьютере</span></div>
-        <div class="service-item"><span class="service-num">03</span><span class="service-text">Публикация и базовая настройка хостинга — включены</span></div>
-        <div class="service-item"><span class="service-num">04</span><span class="service-text">Готово за 3-5 дней с момента брифа</span></div>
-      </div>
 
-      <div class="section-head reveal" style="margin-top:56px;">
-        <span class="eyebrow">Цены</span>
-        <h2>Сколько это стоит</h2>
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <h2 class="reveal">Что я делаю</h2>
+    <p class="lead reveal">Три формата под разные задачи. Каждый сайт делаю с нуля под ваш бизнес.</p>
+    <div class="cards3">
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div>
+        <h3>Сайт-визитка</h3>
+        <p>Одна страница, на которой есть всё: кто вы, что предлагаете, цены и как записаться. Идеально для мастеров, студий и специалистов.</p>
+        <ul class="ticks"><li>Дизайн под ваш стиль</li><li>Кнопка записи в Telegram/Viber</li><li>Карта, контакты, соцсети</li><li>Удобно на телефоне</li></ul>
+        <div class="from">Стоимость <b>от 150 руб.</b></div>
       </div>
-      <div class="price-groups reveal">
-        <div>
-          <div class="price-group">
-            <h3>Разработка</h3>
-            <div class="price-item"><span class="name">Сайт-визитка (1 страница)</span><span class="leader"></span><span class="price">от 150 руб.</span></div>
-            <div class="price-item"><span class="name">Многостраничный сайт (3+)</span><span class="leader"></span><span class="price">от 280 руб.</span></div>
-            <div class="price-item"><span class="name">Домен и хостинг</span><span class="leader"></span><span class="price">включено</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="price-group">
-            <h3>После сдачи</h3>
-            <div class="price-item"><span class="name">Правки в первые 7 дней</span><span class="leader"></span><span class="price">2 круга включены</span></div>
-            <div class="price-item"><span class="name">Доработка позже</span><span class="leader"></span><span class="price">15 руб. / правка</span></div>
-            <div class="price-item"><span class="name">Доп. раздел сайта</span><span class="leader"></span><span class="price">40 руб.</span></div>
-            <div class="price-item"><span class="name">Сопровождение сайта</span><span class="leader"></span><span class="price">от 25 руб./мес</span></div>
-          </div>
-        </div>
-        <p class="price-note">Срочная сдача (за 48 часов вместо 3-5 дней) — +40 руб. Итоговая цена всегда обсуждается до старта, без сюрпризов в конце.</p>
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>Многостраничный сайт</h3>
+        <p>Для бизнеса, которому нужно больше места: отдельные страницы услуг, портфолио, каталог, «О нас» и контакты.</p>
+        <ul class="ticks"><li>От 3 страниц</li><li>Каталог услуг или товаров</li><li>Галерея работ</li><li>Базовая SEO-настройка</li></ul>
+        <div class="from">Стоимость <b>от 280 руб.</b></div>
+      </div>
+      <div class="card reveal">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h3>Сопровождение</h3>
+        <p>Сайт уже есть, но нужно обновлять цены, добавлять работы и следить, чтобы всё работало? Возьму это на себя.</p>
+        <ul class="ticks"><li>Правки текстов и фото</li><li>Новые разделы</li><li>Продление домена и хостинга</li><li>Перенос сайта с другой площадки</li></ul>
+        <div class="from">Стоимость <b>от 25 руб./мес</b></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Обо мне</span>
-        <h2>Без агентства и без посредников</h2>
-      </div>
-      <div class="about-body reveal">
-        <p>Я не агентство и не конструктор — один человек, который лично пишет код каждого сайта и лично отвечает на сообщения. Меньше бюрократии, больше внимания к деталям.</p>
-        <p>Если нужен сайт, который выглядит не как «ещё один шаблон», а сделан конкретно под твой бизнес — пиши, обсудим.</p>
+<!-- WORKS -->
+<section id="works">
+  <div class="wrap">
+    <h2 class="reveal">Посмотрите мои работы</h2>
+    <p class="lead reveal">Каждый сайт можно открыть и полистать — так же, как это сделают ваши клиенты.</p>
+
+    <div class="work reveal">
+      <a class="shot" href="/smalta.html" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img src="work-smalta.webp" alt="Сайт ногтевой студии Смальта" loading="lazy"></a>
+      <div>
+        <h3>Смальта — ногтевая студия</h3>
+        <p class="type">Сайт-визитка для студии маникюра в Минске</p>
+        <dl class="facts">
+          <div><dt>Задача</dt><dd>Показать атмосферу студии и упростить запись</dd></div>
+          <div><dt>Сделано</dt><dd>Гид по формам ногтей, интерактивное меню услуг</dd></div>
+          <div><dt>Заявки</dt><dd>Запись в один клик через Telegram</dd></div>
+        </dl>
+        <div class="links"><a class="btn btn-main" href="/smalta.html" target="_blank" rel="noopener">Смотреть сайт</a><a class="dashed" href="https://t.me/kamkae" target="_blank" rel="noopener">Хочу так же</a></div>
       </div>
     </div>
-  </section>
 
-<section id="reviews">
-<div class="wrap">
-<div class="section-head reveal">
-<span class="eyebrow">Отзывы</span>
-<h2>Что говорят о работе</h2>
-<p class="section-sub">Оставь отзыв о сайте или работе со «Скриптом» — он появится здесь.</p>
-</div>
-<div id="reviewsList" class="reviews-grid reveal"></div>
-<p id="reviewsEmpty" class="review-empty" hidden>Пока отзывов нет. Будь первым.</p>
-<div id="reviewMoreWrap" class="review-more-wrap" hidden><button id="reviewMore" class="review-more" type="button">Показать ещё</button></div>
-<div class="review-form reveal">
-<div class="section-head"><span class="eyebrow">Оставить отзыв</span><h2>Поделись впечатлением</h2></div>
-<form id="reviewForm">
-<div class="review-form-grid">
-<input class="review-input" id="reviewName" type="text" placeholder="Твоё имя" maxlength="40" required>
-<select class="review-select" id="reviewRating" required>
-<option value="5">★★★★★ 5/5</option><option value="4">★★★★☆ 4/5</option><option value="3">★★★☆☆ 3/5</option><option value="2">★★☆☆☆ 2/5</option><option value="1">★☆☆☆☆ 1/5</option>
-</select>
-</div>
-<textarea class="review-textarea" id="reviewText" placeholder="Напиши свой отзыв..." maxlength="500" required></textarea>
-<button class="btn btn-primary review-submit" type="submit">Отправить отзыв</button>
-<p class="review-note">После отправки отзыв можно сначала проверить, а затем опубликовать.</p>
-<p id="reviewStatus" class="review-status" role="status"></p>
-</form>
-</div>
-</div>
+    <div class="work reveal">
+      <a class="shot" href="/flora.html" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img src="work-flora.webp" alt="Сайт цветочной мастерской FLORA" loading="lazy"></a>
+      <div>
+        <h3>FLORA — цветочная мастерская</h3>
+        <p class="type">Сайт с каталогом букетов и заказом</p>
+        <dl class="facts">
+          <div><dt>Задача</dt><dd>Продавать букеты онлайн без сложного магазина</dd></div>
+          <div><dt>Сделано</dt><dd>Каталог букетов, блок доставки, история мастерской</dd></div>
+          <div><dt>Заявки</dt><dd>Кнопка «Заказать» ведёт прямо в мессенджер</dd></div>
+        </dl>
+        <div class="links"><a class="btn btn-main" href="/flora.html" target="_blank" rel="noopener">Смотреть сайт</a><a class="dashed" href="https://t.me/kamkae" target="_blank" rel="noopener">Хочу так же</a></div>
+      </div>
+    </div>
+
+    <div class="work reveal">
+      <a class="shot" href="/atelier.html" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i></div><img src="work-atelier.webp" alt="Сайт архитектурной студии" loading="lazy"></a>
+      <div>
+        <h3>NOVA Atelier — архитектурная студия</h3>
+        <p class="type">Премиальный сайт-портфолио</p>
+        <dl class="facts">
+          <div><dt>Задача</dt><dd>Подчеркнуть уровень студии и показать проекты</dd></div>
+          <div><dt>Сделано</dt><dd>Минималистичный дизайн, крупная типографика, галерея</dd></div>
+          <div><dt>Стиль</dt><dd>Тёмная тема, ничего лишнего</dd></div>
+        </dl>
+        <div class="links"><a class="btn btn-main" href="/atelier.html" target="_blank" rel="noopener">Смотреть сайт</a><a class="dashed" href="https://t.me/kamkae" target="_blank" rel="noopener">Хочу так же</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="steps">
+  <div class="wrap">
+    <h2 class="reveal">Как мы будем работать</h2>
+    <p class="lead reveal">Просто и прозрачно. Вы всегда знаете, что происходит с сайтом.</p>
+    <div class="steps">
+      <div class="step reveal"><h3>Заявка</h3><p>Пишете в Telegram или заполняете расчёт ниже. Отвечаю быстро.</p></div>
+      <div class="step reveal"><h3>Обсуждение</h3><p>Короткий разговор: чем занимаетесь, что нужно на сайте. Фиксируем цену и срок.</p></div>
+      <div class="step reveal"><h3>Дизайн</h3><p>Показываю первый экран. Правим, пока не понравится.</p></div>
+      <div class="step reveal"><h3>Разработка</h3><p>Делаю весь сайт за 2 недели, срочно — за 3–5 дней. Вы видите его до публикации.</p></div>
+      <div class="step reveal"><h3>Запуск</h3><p>Подключаю домен, публикую, проверяю на всех устройствах.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALC -->
+<section id="calc">
+  <div class="wrap">
+    <h2 class="reveal">Рассчитайте стоимость сайта</h2>
+    <p class="lead reveal">Отметьте варианты — цена посчитается сразу. Отправьте расчёт в Telegram, и я отвечу с точной сметой.</p>
+    <form class="calc reveal" id="calcForm" onsubmit="return false">
+      <div>
+        <div class="q"><h3>Какая у вас сфера?</h3><div class="opts">
+          <label class="opt"><input type="radio" name="sphere" value="Красота и здоровье" checked><span>Красота и здоровье</span></label>
+          <label class="opt"><input type="radio" name="sphere" value="Кафе и еда"><span>Кафе и еда</span></label>
+          <label class="opt"><input type="radio" name="sphere" value="Услуги"><span>Услуги</span></label>
+          <label class="opt"><input type="radio" name="sphere" value="Магазин"><span>Магазин</span></label>
+          <label class="opt"><input type="radio" name="sphere" value="Эксперт / личный бренд"><span>Эксперт / личный бренд</span></label>
+          <label class="opt"><input type="radio" name="sphere" value="Другое"><span>Другое</span></label>
+        </div></div>
+        <div class="q"><h3>Какой сайт нужен?</h3><div class="opts">
+          <label class="opt"><input type="radio" name="type" value="visit" checked><span>Одна страница</span></label>
+          <label class="opt"><input type="radio" name="type" value="multi"><span>3–5 страниц</span></label>
+          <label class="opt"><input type="radio" name="type" value="big"><span>Больше 5 страниц</span></label>
+        </div></div>
+        <div class="q"><h3>Что добавить?</h3><div class="opts">
+          <label class="opt"><input type="checkbox" name="extra" value="Каталог / прайс"><span>Каталог / прайс</span></label>
+          <label class="opt"><input type="checkbox" name="extra" value="Галерея работ"><span>Галерея работ</span></label>
+          <label class="opt"><input type="checkbox" name="extra" value="Форма заявки"><span>Форма заявки</span></label>
+          <label class="opt"><input type="checkbox" name="extra" value="Сопровождение"><span>Сопровождение</span></label>
+        </div></div>
+        <div class="q" style="margin-bottom:0"><h3>Как срочно?</h3><div class="opts">
+          <label class="opt"><input type="radio" name="speed" value="std" checked><span>За 2 недели</span></label>
+          <label class="opt"><input type="radio" name="speed" value="fast"><span>Срочно, за 3–5 дней</span></label>
+        </div></div>
+      </div>
+      <aside class="result" aria-live="polite">
+        <small>Примерная стоимость</small>
+        <div class="sum" id="sum">150 руб.</div>
+        <div class="days" id="days">Готово за 2 недели</div>
+        <ul>
+          <li>Дизайн и разработка</li>
+          <li>Адаптив под телефон</li>
+          <li>Публикация в интернете</li>
+          <li>2 круга правок</li>
+        </ul>
+        <a class="btn btn-main" id="sendCalc" href="https://t.me/kamkae" target="_blank" rel="noopener">Отправить расчёт в Telegram</a>
+        <p class="note">Точную цену назову после короткого разговора</p>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<!-- PRICES DETAIL -->
+<section id="prices" style="padding-top:0">
+  <div class="wrap">
+    <div class="two">
+      <div class="card reveal">
+        <h3 class="sm">Уже входит в цену</h3>
+        <ul class="plist">
+          <li>Дизайн с нуля под ваш бизнес <b>✓</b></li>
+          <li>Версия для телефона и планшета <b>✓</b></li>
+          <li>Публикация и подключение вашего домена <b>✓</b></li>
+          <li>Базовая SEO-настройка <b>✓</b></li>
+          <li>Правки в первые 7 дней <b>2 круга</b></li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3 class="sm">Дополнительно</h3>
+        <ul class="plist">
+          <li>Новый раздел сайта <b>40 руб.</b></li>
+          <li>Правка после сдачи <b>15 руб.</b></li>
+          <li>Срочно, за 3–5 дней <b>+40 руб.</b></li>
+          <li>Сопровождение сайта <b>от 25 руб./мес</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="photo reveal"><img src="mark.webp" alt="Марк, создатель студии «Скрипт»" loading="lazy"></div>
+    <div class="reveal">
+      <span class="eyebrow"><i></i>Обо мне</span>
+      <h2 style="margin-top:18px">Привет, я&nbsp;Марк</h2>
+      <p>Я веб-разработчик из Минска и только начинаю свой путь, поэтому мои цены заметно ниже, чем у студий, а каждому проекту я уделяю всё своё внимание.</p>
+      <p>Работаю быстро: использую современные инструменты, в том числе искусственный интеллект, а если сайт нужен срочно, сделаю его за 3–5 дней. Больше всего люблю делать сайты для кафе, парикмахерских, салонов и небольших студий: красивые, удобные на телефоне и с понятной записью.</p>
+      <p>Обещаю каждому клиенту две вещи: я всегда на связи и сделаю сайт, который вам понравится.</p>
+      <div class="nums">
+        <div><b class="grad">2</b><span>недели на сайт</span></div>
+        <div><b class="grad">от 150</b><span>рублей за визитку</span></div>
+        <div><b class="grad">100%</b><span>внимания вашему проекту</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <h2 class="reveal">Частые вопросы</h2>
+    <div class="faq reveal">
+      <details><summary>Что нужно от меня, чтобы начать?</summary><p>Расскажите о бизнесе, пришлите логотип (если есть), фото работ и контакты. Если чего-то нет, помогу с текстами и подберу изображения.</p></details>
+      <details><summary>Что, если мне не понравится дизайн?</summary><p>Сначала я показываю первый экран, и мы правим его, пока он вам не понравится. Только потом делаю весь сайт. В цену входят 2 круга правок.</p></details>
+      <details><summary>Кому принадлежит сайт и домен?</summary><p>Вам. Домен оформляется на вас, а файлы сайта вы получаете полностью.</p></details>
+      <details><summary>Будет ли сайт находиться в Google и Яндексе?</summary><p>Да. Я делаю базовую SEO-настройку: заголовки, описания, адаптив и быструю загрузку, и добавляю сайт в поисковики.</p></details>
+      <details><summary>Можно ли потом что-то изменить или добавить?</summary><p>Конечно. Новый раздел стоит 40 руб., отдельная правка — 15 руб. Или можно взять сопровождение от 25 руб. в месяц.</p></details>
+      <details><summary>Можно ли принимать оплату прямо на сайте?</summary><p>Онлайн-оплату на сайте я пока не подключаю. Вместо неё сделаю удобную кнопку заказа или записи в Telegram, Viber или WhatsApp, чтобы клиенты сразу писали вам.</p></details>
+      <details><summary>Как проходит оплата?</summary><p>Цену фиксируем до начала работы. Обычно это предоплата 50% и остаток после сдачи сайта.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SEO TEXT -->
+<section id="seo" style="padding-top:0">
+  <div class="wrap">
+    <div class="seo-text reveal">
+      <h2>Создание сайтов в Минске недорого</h2>
+      <p>«Скрипт» — это разработка сайтов под ключ для малого бизнеса в Минске и по всей Беларуси. Делаю сайты-визитки, лендинги (одностраничные сайты) и небольшие многостраничные сайты для компаний, мастеров и частных специалистов. Если вам нужно заказать сайт недорого и быстро, напишите мне в Telegram.</p>
+      <h3>Для кого я делаю сайты</h3>
+      <p>Сайт для кафе и ресторана с меню и записью на бронь. Сайт для парикмахерской и барбершопа. Сайт для салона красоты, ногтевой студии и мастера маникюра. Сайт для цветочного магазина, фотографа, тренера, репетитора, психолога и любого специалиста, который принимает клиентов по записи.</p>
+      <h3>Что входит в разработку сайта</h3>
+      <p>Уникальный дизайн без шаблонов, адаптивная вёрстка под телефон и планшет, быстрая загрузка, кнопки записи в Telegram, Viber и WhatsApp, базовая SEO-оптимизация для Google и Яндекса, публикация сайта и подключение вашего домена.</p>
+      <h3>Сколько стоит сайт в Минске</h3>
+      <p>Сайт-визитка стоит от 150 рублей, многостраничный сайт — от 280 рублей, сопровождение сайта — от 25 рублей в месяц. Обычный срок создания сайта — 2 недели, срочная разработка — 3–5 дней. Точную стоимость сайта можно рассчитать в калькуляторе выше.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="final reveal">
+      <h2>Давайте сделаем ваш сайт</h2>
+      <p class="lead">Напишите пару слов о своём бизнесе. Я быстро отвечу и предложу решение с ценой.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="https://t.me/kamkae" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.8 15.3l-.4 5.6c.6 0 .8-.3 1.1-.6l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-.9L24.5 3c.3-1.4-.5-2-1.5-1.6L1.2 9.8C-.2 10.4-.2 11.2 1 11.6l5.6 1.7L19.5 5c.6-.4 1.2-.2.7.2"/></svg>Написать в Telegram</a>
+        <a class="btn btn-ghost" href="#calc">Рассчитать стоимость</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="wrap footer-row">
-    <span>© Скрипт</span>
-    <span>Минск · Telegram: @kamkae</span>
+  <div class="wrap">
+    <span>© Скрипт, 2026 · Создание сайтов в Минске</span>
+    <a href="https://t.me/kamkae" target="_blank" rel="noopener">Telegram: @kamkae</a>
   </div>
 </footer>
 
+<a class="tg-float" href="https://t.me/kamkae" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg viewBox="0 0 24 24"><path d="M9.8 15.3l-.4 5.6c.6 0 .8-.3 1.1-.6l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-.9L24.5 3c.3-1.4-.5-2-1.5-1.6L1.2 9.8C-.2 10.4-.2 11.2 1 11.6l5.6 1.7L19.5 5c.6-.4 1.2-.2.7.2"/></svg></a>
+
 <script>
-  /* Анимации */
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(function (i) { io.observe(i); });
-  } else {
-    reveals.forEach(function (i) { i.classList.add('in'); });
+(function(){
+  var hdr=document.getElementById('hdr');
+  function onScroll(){hdr.classList.toggle('scrolled',window.scrollY>20)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  var f=document.getElementById('calcForm'), sum=document.getElementById('sum'), days=document.getElementById('days'), send=document.getElementById('sendCalc');
+  var base={visit:150,multi:280,big:400}, names={visit:'одностраничный сайт',multi:'сайт на 3–5 страниц',big:'сайт больше 5 страниц'};
+  var extraPrice={'Каталог / прайс':40,'Галерея работ':40,'Форма заявки':0,'Сопровождение':0};
+  function calc(){
+    var t=f.type.value, s=f.speed.value, sphere=f.sphere.value;
+    var ex=[].slice.call(f.querySelectorAll('input[name=extra]:checked')).map(function(i){return i.value});
+    var total=base[t]; ex.forEach(function(e){total+=extraPrice[e]||0}); if(s==='fast') total+=40;
+    var prefix=t==='big'?'от ':'≈ ';
+    sum.textContent=prefix+total+' руб.';
+    days.textContent=s==='fast'?'Срочно: готово за 3–5 дней':(t==='big'?'Готово за 2–3 недели':'Готово за 2 недели');
+    var msg='Здравствуйте! Хочу сайт.\nСфера: '+sphere+'\nФормат: '+names[t]+(ex.length?'\nДобавить: '+ex.join(', '):'')+'\nСрок: '+(s==='fast'?'срочно, 3–5 дней':'2 недели')+'\nРасчёт на сайте: '+prefix+total+' руб.';
+    send.href='https://t.me/kamkae?text='+encodeURIComponent(msg);
   }
-
-  /* Общие отзывы через Supabase.
-     После создания проекта вставь сюда Project URL и anon key. */
-  var SUPABASE_URL = 'https://umnzeqphbrdhvqhjvksa.supabase.co';
-  var SUPABASE_ANON_KEY = 'sb_publishable_tY3pwZ6ZEECez0B8zrvbCQ_QlfBDupd';
-
-  var reviewForm = document.getElementById('reviewForm');
-  var reviewsList = document.getElementById('reviewsList');
-  var reviewsEmpty = document.getElementById('reviewsEmpty');
-  var reviewMoreWrap = document.getElementById('reviewMoreWrap');
-  var reviewMore = document.getElementById('reviewMore');
-  var reviewStatus = document.getElementById('reviewStatus');
-
-  var reviews = [];
-  var reviewsVisible = 4;
-  var reviewsStep = 4;
-
-  function escapeHTML(value) {
-    return String(value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
-  function configured() {
-    return SUPABASE_URL.indexOf('ВСТАВЬ_СЮДА') === -1 &&
-           SUPABASE_ANON_KEY.indexOf('ВСТАВЬ_СЮДА') === -1;
-  }
-
-  function setStatus(message, isError) {
-    reviewStatus.textContent = message || '';
-    reviewStatus.style.color = isError ? 'var(--coral)' : 'var(--ink-muted)';
-  }
-
-  function formatDate(value) {
-    if (!value) return '';
-    var d = new Date(value);
-    return isNaN(d.getTime()) ? '' : d.toLocaleDateString('ru-RU');
-  }
-
-  async function loadReviews() {
-    if (!configured()) {
-      reviews = [];
-      reviewsEmpty.hidden = false;
-      reviewsEmpty.textContent = 'База отзывов ещё не подключена.';
-      reviewMoreWrap.hidden = true;
-      return;
-    }
-
-    try {
-      var response = await fetch(
-        SUPABASE_URL + '/rest/v1/reviews?select=id,name,rating,text,created_at&order=created_at.desc',
-        {
-          headers: {
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
-          }
-        }
-      );
-
-      if (!response.ok) throw new Error('Не удалось загрузить отзывы');
-      reviews = await response.json();
-      renderReviews();
-    } catch (error) {
-      reviews = [];
-      reviewsEmpty.hidden = false;
-      reviewsEmpty.textContent = 'Не удалось загрузить отзывы. Попробуй обновить страницу.';
-      reviewMoreWrap.hidden = true;
-      setStatus('Ошибка подключения к базе.', true);
-    }
-  }
-
-  function renderReviews() {
-    reviewsList.innerHTML = '';
-
-    if (!reviews.length) {
-      reviewsEmpty.hidden = false;
-      reviewMoreWrap.hidden = true;
-      return;
-    }
-
-    reviewsEmpty.hidden = true;
-
-    reviews.slice(0, reviewsVisible).forEach(function (review) {
-      var card = document.createElement('article');
-      card.className = 'review-card';
-
-      var rating = Math.max(1, Math.min(5, Number(review.rating) || 5));
-      var stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-
-      card.innerHTML =
-        '<div class="review-top">' +
-          '<div>' +
-            '<div class="review-name">' + escapeHTML(review.name) + '</div>' +
-            '<div class="review-date">' + escapeHTML(formatDate(review.created_at)) + '</div>' +
-          '</div>' +
-          '<div class="review-stars" aria-label="Оценка ' + rating + ' из 5">' + stars + '</div>' +
-        '</div>' +
-        '<p class="review-text">' + escapeHTML(review.text).replace(/\n/g, '<br>') + '</p>';
-
-      reviewsList.appendChild(card);
-    });
-
-    if (reviews.length > reviewsVisible) {
-      reviewMoreWrap.hidden = false;
-      reviewMore.textContent = 'Показать ещё';
-    } else if (reviews.length > 4) {
-      reviewMoreWrap.hidden = false;
-      reviewMore.textContent = 'Свернуть отзывы';
-    } else {
-      reviewMoreWrap.hidden = true;
-    }
-  }
-
-  reviewMore.addEventListener('click', function () {
-    if (reviewsVisible < reviews.length) {
-      reviewsVisible += reviewsStep;
-    } else {
-      reviewsVisible = 4;
-    }
-    renderReviews();
-  });
-
-  reviewForm.addEventListener('submit', async function (event) {
-    event.preventDefault();
-
-    var name = document.getElementById('reviewName').value.trim();
-    var rating = Number(document.getElementById('reviewRating').value);
-    var text = document.getElementById('reviewText').value.trim();
-
-    if (!name || !text || rating < 1 || rating > 5) {
-      setStatus('Заполни имя и текст отзыва.', true);
-      return;
-    }
-
-    if (!configured()) {
-      setStatus('База ещё не подключена. Сначала создай проект Supabase и вставь его данные в код.', true);
-      return;
-    }
-
-    var button = reviewForm.querySelector('button[type="submit"]');
-    button.disabled = true;
-    button.textContent = 'Отправляем...';
-    setStatus('');
-
-    try {
-      var response = await fetch(SUPABASE_URL + '/rest/v1/reviews', {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({
-          name: name,
-          rating: rating,
-          text: text
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-
-      reviewForm.reset();
-      reviewsVisible = 4;
-      setStatus('Спасибо! Отзыв отправлен.', false);
-      await loadReviews();
-    } catch (error) {
-      setStatus('Не получилось отправить отзыв. Проверь настройки Supabase.', true);
-    } finally {
-      button.disabled = false;
-      button.textContent = 'Отправить отзыв';
-    }
-  });
-
-  loadReviews();
+  f.addEventListener('change',calc); calc();
+})();
 </script>
 </body>
 </html>
